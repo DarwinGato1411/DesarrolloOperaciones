@@ -30,9 +30,9 @@ public class ServicioUsuario {
 
         try {
             em = HelperPersistencia.getEMF();
-          em.getTransaction().begin();
+            em.getTransaction().begin();
             em.persist(usuario);
-          em.getTransaction().commit();
+            em.getTransaction().commit();
         } catch (Exception e) {
             System.out.println("Error en insertar usuario");
         } finally {
@@ -45,11 +45,9 @@ public class ServicioUsuario {
 
         try {
             em = HelperPersistencia.getEMF();
-          em.getTransaction().begin();
+            em.getTransaction().begin();
             em.remove(em.merge(usuario));
-          em.getTransaction().commit();
-
-
+            em.getTransaction().commit();
 
         } catch (Exception e) {
             System.out.println("Error en eliminar  usuario" + e);
@@ -63,9 +61,9 @@ public class ServicioUsuario {
 
         try {
             em = HelperPersistencia.getEMF();
-          em.getTransaction().begin();
+            em.getTransaction().begin();
             em.merge(usuario);
-          em.getTransaction().commit();
+            em.getTransaction().commit();
         } catch (Exception e) {
             System.out.println("Error en insertar usuario");
         } finally {
@@ -82,7 +80,7 @@ public class ServicioUsuario {
             //Connection connection = em.unwrap(Connection.class);
 
             em = HelperPersistencia.getEMF();
-          em.getTransaction().begin();
+            em.getTransaction().begin();
             Query query = em.createQuery("SELECT u FROM Usuario u WHERE u.usuLogin = :usuLogin");
             query.setParameter("usuLogin", nombre);
             listaClientes = (List<Usuario>) query.getResultList();
@@ -93,7 +91,7 @@ public class ServicioUsuario {
             } else {
                 usuarioObtenido = null;
             }
-          em.getTransaction().commit();
+            em.getTransaction().commit();
         } catch (Exception e) {
             System.out.println("Error en lsa consulta usuario  FindUsuarioPorNombre  " + e);
         } finally {
@@ -111,11 +109,11 @@ public class ServicioUsuario {
             System.out.println("Entra a consultar usuarios");
             //Connection connection = em.unwrap(Connection.class);
             em = HelperPersistencia.getEMF();
-          em.getTransaction().begin();
-            Query query = em.createNamedQuery("Usuario.findLikeNombre", Usuario.class);
-            query.setParameter("usuNombre", "%" + nombre + "%");
+            em.getTransaction().begin();
+            Query query = em.createQuery("SELECT a FROM Usuario a where a.usuNombre LIKE :usuNombre");
+            query.setParameter("usuNombre", "%"+nombre+"%");
             listaUsuarios = (List<Usuario>) query.getResultList();
-          em.getTransaction().commit();
+            em.getTransaction().commit();
         } catch (Exception e) {
             System.out.println("Error en lsa consulta usuarios");
         } finally {

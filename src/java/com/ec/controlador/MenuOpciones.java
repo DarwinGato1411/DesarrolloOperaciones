@@ -69,9 +69,9 @@ public class MenuOpciones extends SelectorComposer<Component> {
         }
     }
 
-    @Listen("onClick = #buttonConsultar")
+    @Listen("onClick = #btnAdministrar")
     public void buttonConsultar() {
-        Executions.sendRedirect("/consultas.zul");
+        Executions.sendRedirect("/administrar/administrar.zul");
     }
     
 

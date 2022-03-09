@@ -34,7 +34,7 @@
         
                    <button label="Procesar" id="btnNotaVentas" class="btn letraBanner" />               
                    
-                   <button label="Catalogos" class="btn letraBanner" id="btnAdministarVenta"  />
+                   <button label="Administrar" class="btn letraBanner" id="btnAdministrar"  />
 
 
                 </div>
