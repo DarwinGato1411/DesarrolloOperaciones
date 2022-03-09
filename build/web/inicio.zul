@@ -1,7 +1,7 @@
 <?link rel="stylesheet" type="text/css" href="/css/boostrap/bootstrap.css"?>   
 <?link rel="stylesheet" type="text/css" href="/css/style.css"?>
 <?link rel="icon" type="image/x-icon" href="/iconos/deckxel.ico"?>  
-<?page title="Posibilitum" contentType="text/html;charset=UTF-8"?>
+<?page title="Servicio de rastreo" contentType="text/html;charset=UTF-8"?>
 
 <zk contentStyle="overflow:auto" >
 
@@ -24,7 +24,7 @@
         <div class="row " align="lefth">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group"  align="center">
                    
-                <image  src="/imagenes/logoPosibilitum.jpeg" class="imgRedondaLogoLogin" width="75%" ></image>
+                <image  src="/imagenes/login.jpeg" class="imgRedondaLogoLogin" width="75%" ></image>
             </div>
 
             <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-group">

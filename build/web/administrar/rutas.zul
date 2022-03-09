@@ -23,7 +23,7 @@
             <div class="col-12 col-sm-12 col-md-4 col-lg-4 form-group " align="start"  >
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group " align="start"  >
                     <button  src="/iconos/nuevo_pro-24.png"
-                            label="Nueva tarifa"
+                            label="Nueva ruta"
                             class="btn btn btn-secondary btn-sm "
                             onClick="@command('nuevo')"
                             tooltiptext="Nueva ruta"/>
@@ -40,8 +40,8 @@
                         <listheader width="35%"   sort="auto(rutNombre)" >
                             <textbox value="@bind(vm.buscarRuta)" 
                                      class="form-control form-control-sm"
-                                     tooltiptext="Tarifa "                         
-                                     placeholder="Tarifa"
+                                     tooltiptext="Ruta "                         
+                                     placeholder="Ruta"
                                      onOK="@command('buscarRuta')"
                                      onChange="self.setValue(self.getValue().toUpperCase());" />
                         </listheader>     
@@ -81,13 +81,13 @@
                       <label  style="color:blue;font-weight:bold" value="@bind(vm.tarifaSeleted.tariDescripcion)"/>
                     
                 </div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group " align="start"  >
+-->                <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group " align="start"  >
                     <button  src="/iconos/nuevo_pro-24.png"
-                            label="Nuevo detalle de tarifa"
+                            label="Puntos de control"
                             class="btn btn btn-secondary btn-sm "
                             onClick="@command('nuevoDetalle')"
-                            tooltiptext="Nuevo detalle de tarifa"/>
-                </div>-->
+                            tooltiptext="Puntos de control"/>
+                </div>
                  <listbox   model="@load(vm.listaRutaModel)" 
                            onSelect="@command('seleccionarRegistros')" 
                            mold="paging" pageSize="15"
@@ -100,8 +100,8 @@
                         <listheader width="35%"   sort="auto(rutNombre)" >
                             <textbox value="@bind(vm.buscarRuta)" 
                                      class="form-control form-control-sm"
-                                     tooltiptext="Tarifa "                         
-                                     placeholder="Tarifa"
+                                     tooltiptext="Detalle de ruta "                         
+                                     placeholder="Detalle de ruta "
                                      onOK="@command('buscarRuta')"
                                      onChange="self.setValue(self.getValue().toUpperCase());" />
                         </listheader>     
