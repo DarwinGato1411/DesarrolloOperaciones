@@ -6,7 +6,9 @@ package com.ec.servicio;
 
 import com.ec.entidad.Ruta;
 import com.ec.entidad.Usuario;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -116,6 +118,46 @@ public class ServicioRutas {
             em.getTransaction().commit();
         } catch (Exception e) {
             System.out.println("Error en la consulta findByUsuario " + e.getMessage());
+        } finally {
+            em.close();
+        }
+
+        return listaRutas;
+    }
+    
+    public List<Ruta> findByFecha(Date fecha) {
+
+        List<Ruta> listaRutas = new ArrayList<Ruta>();
+        try {
+            String pattern = "yyyy MMMMM dd  HH:mm:ss";
+            SimpleDateFormat simpleDateFormat
+                    = new SimpleDateFormat(pattern);
+            //Connection connection = em.unwrap(Connection.class);
+            Date inicio = fecha;
+            inicio.setHours(0);
+            inicio.setMinutes(0);
+            String inicioText = simpleDateFormat.format(inicio);
+
+            Date fin = fecha;
+            fin.setHours(11);
+            fin.setMinutes(59);
+            String finText = simpleDateFormat.format(fin);
+
+            Date paramInicio = simpleDateFormat.parse(inicioText);
+            Date paramFin = simpleDateFormat.parse(finText);
+
+            System.out.println("inicio " + paramInicio);
+            System.out.println("fin " + paramFin);
+            em = HelperPersistencia.getEMF();
+            em.getTransaction().begin();
+            Query query = em.createQuery("SELECT u FROM Ruta u WHERE  u. BETWEEN :inicio and :fin");
+            query.setParameter("inicio", paramInicio);
+            query.setParameter("fin", paramFin);
+            listaRutas = (List<Ruta>) query.getResultList();
+            System.out.println("RUTAS " + listaRutas.size());
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println("Error en lsa consulta Rutas  findByFecha  " + e.getMessage());
         } finally {
             em.close();
         }
