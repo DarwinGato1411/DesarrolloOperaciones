@@ -21,3 +21,33 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+/dist/
+/DesarrolloOperaciones/dist/
+/DesarrolloOperaciones/build/
+### NetBeans ###
+**/nbproject/private/**
+**/nbproject/Makefile-*.mk
+**/nbproject/Package-*.bash
+core
+nbproject/**
+nbproject/private/*  
+nbproject/project.properties
+nbproject/project.xml
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+/nbbuild/
+/dist/
+/dist/**
+/build/
+/build/**
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+/DesarrolloOperaciones/nbproject/*
+/DesarrolloOperaciones/nbproject/private/**
+/DesarrolloOperaciones/nbproject/private/private.properties
