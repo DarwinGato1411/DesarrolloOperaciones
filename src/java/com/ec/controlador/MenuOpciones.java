@@ -52,19 +52,8 @@ public class MenuOpciones extends SelectorComposer<Component> {
         if (credential.getUsuarioSistema() != null) {
 
             if (credential.getUsuarioSistema().getUsuNivel() == 1) {
-//                btnFacturar.setVisible(Boolean.TRUE);
-//                menuVentas.setVisible(Boolean.TRUE);
-//                menuCompras.setVisible(Boolean.TRUE);
-//                menuKardex.setVisible(Boolean.TRUE);
-//                menuReportes.setVisible(Boolean.TRUE);
-//                btnAdministarVenta.setVisible(Boolean.TRUE);
             } else {
-                btnFacturar.setVisible(Boolean.TRUE);
-//                menuVentas.setVisible(Boolean.FALSE);
-//                menuCompras.setVisible(Boolean.FALSE);
-//                menuKardex.setVisible(Boolean.FALSE);
-//                menuReportes.setVisible(Boolean.FALSE);
-//                btnAdministarVenta.setVisible(Boolean.FALSE);
+
             }
         }
     }

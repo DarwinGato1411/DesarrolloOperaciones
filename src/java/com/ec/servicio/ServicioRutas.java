@@ -5,6 +5,7 @@
 package com.ec.servicio;
 
 import com.ec.entidad.Ruta;
+import com.ec.entidad.Usuario;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -95,6 +96,26 @@ public class ServicioRutas {
             em.getTransaction().commit();
         } catch (Exception e) {
             System.out.println("Error en la consulta findByNombre " + e.getMessage());
+        } finally {
+            em.close();
+        }
+
+        return listaRutas;
+    }
+
+    public List<Ruta> findByUsuario(Usuario usuario) {
+
+        List<Ruta> listaRutas = new ArrayList<Ruta>();
+        try {
+
+            em = HelperPersistencia.getEMF();
+            em.getTransaction().begin();
+            Query query = em.createQuery("SELECT a FROM Ruta a WHERE a.idUsuario=:usuario");
+            query.setParameter("usuario", usuario);
+            listaRutas = (List<Ruta>) query.getResultList();
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println("Error en la consulta findByUsuario " + e.getMessage());
         } finally {
             em.close();
         }
