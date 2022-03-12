@@ -4,7 +4,6 @@
  */
 package com.ec.controlador;
 
-
 import com.ec.seguridad.EnumSesion;
 import com.ec.seguridad.UserCredential;
 import org.zkoss.bind.annotation.Command;
@@ -23,7 +22,6 @@ import org.zkoss.zul.Menuitem;
  * @author gato
  */
 public class MenuOpciones extends SelectorComposer<Component> {
-
 
     @Wire("#btnFacturar")
     Menuitem btnFacturar;
@@ -62,9 +60,12 @@ public class MenuOpciones extends SelectorComposer<Component> {
     public void buttonConsultar() {
         Executions.sendRedirect("/administrar/administrar.zul");
     }
-    
 
-  
+    @Listen("onClick = #btnProcesar")
+    public void buttonProcesar() {
+        Executions.sendRedirect("/procesar/procesar.zul");
+    }
+
     @Command
     public void nuevoCliente() {
 

@@ -5,9 +5,11 @@
 package com.ec.controlador;
 
 import com.ec.entidad.Ruta;
+import com.ec.entidad.Usuario;
 import com.ec.servicio.ServicioRutas;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -29,25 +31,31 @@ public class Rutas {
     private ListModelList<Ruta> listaRutaModel;
     private Set<Ruta> registrosSeleccionados = new HashSet<Ruta>();
     private String buscarRuta = "";
-
+    private Usuario usuario;
+    private Date fecha = new Date();
     //mailing
     public Rutas() {
+        consultaUsuarios();
         getRutas();
-
+        
     }
 
     /*ADMINISTRAR USUARIO*/
     private void consultaRutas() {
         listaRutas = servicioRutas.findByNombre(buscarRuta);
     }
-
+    private void consultaUsuarios() {
+        listaRutas = servicioRutas.findByUsuario(usuario);
+    }
+    
     private void getRutas() {
         consultaRutas();
         setListaRutaModel(new ListModelList<Ruta>(getListaRutas()));
         ((ListModelList<Ruta>) listaRutaModel).setMultiple(false);
 
     }
-
+    
+    
     public List<Ruta> getListaRutas() {
         return listaRutas;
     }
@@ -80,6 +88,23 @@ public class Rutas {
         this.buscarRuta = buscarRuta;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+    
+    
     @Command
     @NotifyChange({"listaDetalleFacturaModel", "buscarNombre"})
     public void buscarRuta() {
@@ -107,4 +132,9 @@ public class Rutas {
         consultaRutas();
     }
 
+    @Command
+    @NotifyChange({"listaRutas", "usuario"})
+    public void buscarRutasFecha() {
+        consultaUsuarios();
+    }
 }

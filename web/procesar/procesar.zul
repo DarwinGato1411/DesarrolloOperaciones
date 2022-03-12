@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?link rel="stylesheet" type="text/css" href="/css/boostrap/bootstrap.css"?>  
+<?link rel="stylesheet" type="text/css" href="/css/style.css"?>
+<?init class="com.ec.seguridad.Autentificador"?>
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/plantilla/plantilla.zul"?>
+<?link rel="icon" type="image/x-icon" href="/iconos/deckxel.ico"?>
+<zk  contentStyle="overflow:auto" with="100%" >
+    <hbox self="@define(content)" apply="org.zkoss.bind.BindComposer" 
+          viewModel="@id('vm') @init('com.ec.controlador.Rutas')" width="100%">
+<!--        <tabbox  width="100%"  tabscroll="true" >
+            <tabs >
+                <tab label="SISTEMA DE FACTURACION" sclass="menutabs"/>
+            </tabs>
+            <tabpanels >
+                
+        <tabpanel  height="100%" width="98%"  >-->
+                    
+        <div class="container-fluid " >
+                        
+            <div class="row" style="margin-top:5px">
+                <div class="row  col-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                        <image  src="/iconos/excel1.png"/>
+                        <button  
+                            label="Subir Archivo"
+                            style="background:#FFC300"
+                            class="btn  btn-sm grow"
+                            onClick="@command('')" 
+                            tooltiptext="Subir Archivo 'FORMARTO'"/>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                        <image  src="/iconos/date-time.png"/>
+<!--                        <datebox id="db5" cols="12" format="yyyy/MM/dd" onCreate="self.value = new Date()" />
+                        <timebox id="tb3" cols="12" format="a hh:mm:ss" onCreate="self.value = new Date()" />-->
+                        <datebox compact="true" value="@bind(vm.fecha)" 
+                                     style="font-weight:bold"                                               
+                                     buttonVisible="true" 
+                                     lenient="true" format="dd/MM/yyyy" 
+                                     constraint="no empty: Ingrese la fecha "/>
+                        <button   image="/imagenes/buscar1.png"
+                                      onClick="@command('buscarRutasFecha')"  
+                                      class="btn btn-primary btn-sm  "
+                                      tooltiptext="Buscar solicitudes por fecha"/> 
+                                    
+                        <button  
+                            label="Procesar Datos"
+                            style="background:#D79EFF"
+                            class="btn  btn-sm grow"
+                            onClick="@command('')" 
+                            tooltiptext="BUSCAR'"/>
+                    </div>
+                </div>
+<!--                <div class="row  col-12 col-sm-12 col-md-6 col-lg-6">
+                    
+                </div>       -->
+                <div class="row  col-12 col-sm-12 col-md-11 col-lg-12">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                        <listbox model="@load(vm.listaRutas)" 
+                                 nonselectableTags=""  mold="paging" pageSize="12"  >
+                            <custom-attributes org.zkoss.zul.listbox.rod="true"/>
+                    
+                            <listhead> 
+                                <listheader width="20%"  label="USUARIO "  /> 
+                                <listheader width="20%"  label="RUTA "  /> 
+                                <listheader width="60%"  label="DESCRIPCIÓN "  /> 
+                            </listhead>  
+                            <template name="model">   
+                                                                                       
+                                <listitem> 
+                                    <listcell zclass = "mycss-listcell">
+                                        <textbox readonly="true" style="font-size:12px;background:#EBF5FB"  
+                                                 class="form-control form-control-sm"                            
+                                                 value="@bind(each.idUsuario.usuNombre)" width="100%" />
+                                    </listcell>
+                                    <listcell zclass = "mycss-listcell">
+                                        <textbox readonly="true" style="font-size:12px;background:#EBF5FB"  
+                                                 class="form-control form-control-sm"                            
+                                                 value="@bind(each.rutNombre)" width="100%" />
+                                    </listcell>
+                                    <listcell zclass = "mycss-listcell">
+                                        <textbox readonly="true" style="font-size:12px;background:#EBF5FB"  
+                                                 class="form-control form-control-sm"                            
+                                                 value="@bind(each.rutDescripcion)" width="100%" />
+                                    </listcell>
+                                </listitem>
+                            </template>
+                        </listbox>
+                    </div>
+                </div>
+                            
+            </div>
+                       
+        </div>
+        <!--                </tabpanel>
+            </tabpanels>
+        </tabbox>  -->
+    </hbox>
+</zk>
