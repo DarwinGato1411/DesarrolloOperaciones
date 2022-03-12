@@ -47,7 +47,7 @@ public class LoginController extends SelectorComposer<Component> {
             if (cre.getUsuarioSistema().getUsuLogin().equals("admin")) {
                 Executions.sendRedirect("/admin/inicio.zul");
             } else {
-                Executions.sendRedirect("/operacion/procesar.zul");
+                Executions.sendRedirect("/admin/inicio.zul");
             }
         } else {
             Messagebox.show("Usuario o Contraseña incorrecto. \n Contactese con el administrador.", "Atención", Messagebox.OK, Messagebox.EXCLAMATION);

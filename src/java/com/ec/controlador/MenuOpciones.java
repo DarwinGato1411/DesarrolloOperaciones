@@ -14,6 +14,7 @@ import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zul.Button;
 import org.zkoss.zul.Menu;
 import org.zkoss.zul.Menuitem;
 
@@ -23,18 +24,11 @@ import org.zkoss.zul.Menuitem;
  */
 public class MenuOpciones extends SelectorComposer<Component> {
 
-    @Wire("#btnFacturar")
-    Menuitem btnFacturar;
-    @Wire("#menuVentas")
-    Menu menuVentas;
-    @Wire("#menuCompras")
-    Menu menuCompras;
-    @Wire("#menuKardex")
-    Menu menuKardex;
-    @Wire("#menuReportes")
-    Menu menuReportes;
-    @Wire("#btnAdministarVenta")
-    Menuitem btnAdministarVenta;
+    @Wire("#btnProcesar")
+    Button btnProcesar;
+    @Wire("#btnAdministrar")
+    Button btnAdministrar;
+
     UserCredential credential = new UserCredential();
     private String acceso = "";
 
@@ -51,7 +45,7 @@ public class MenuOpciones extends SelectorComposer<Component> {
 
             if (credential.getUsuarioSistema().getUsuNivel() == 1) {
             } else {
-
+                btnAdministrar.setVisible(Boolean.FALSE);
             }
         }
     }

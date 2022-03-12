@@ -20,7 +20,7 @@
                 <combobox class="badge badge-default   btn-secondary  textoFechaDateBox" 
                           selectedItem="@bind(vm.tipoUSuario)">
                     <comboitem label="ADMINISTRADOR" value="1" />
-                    <comboitem label="VENTAS" value="2" />
+                    <comboitem label="CONTROL" value="2" />
                 </combobox>    
 
             </div>

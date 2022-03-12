@@ -39,6 +39,8 @@ public class DetalleRuta implements Serializable {
     @Size(max = 100)
     @Column(name = "detr_nombre")
     private String detrNombre;
+      @Column(name = "detrp_tiempo_real")
+    private Integer detrTiempoReal;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "detr_longitud")
     private BigDecimal detrLongitud;
@@ -123,6 +125,14 @@ public class DetalleRuta implements Serializable {
 
     public void setIdRuta(Ruta idRuta) {
         this.idRuta = idRuta;
+    }
+
+    public Integer getDetrTiempoReal() {
+        return detrTiempoReal;
+    }
+
+    public void setDetrTiempoReal(Integer detrTiempoReal) {
+        this.detrTiempoReal = detrTiempoReal;
     }
 
     @Override

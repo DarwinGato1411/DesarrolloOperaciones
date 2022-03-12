@@ -69,7 +69,7 @@ public class AgregarUsuario {
             if (Integer.valueOf(tipoUSuario) == 1) {
                 usuarioSistema.setUsuTipoUsuario("ADMINISTRADOR");
             } else if (Integer.valueOf(tipoUSuario) == 2) {
-                usuarioSistema.setUsuTipoUsuario("VENTAS");
+                usuarioSistema.setUsuTipoUsuario("CONTROL");
             }
             servicioUsuario.modificar(usuarioSistema);
             usuarioSistema = new Usuario();

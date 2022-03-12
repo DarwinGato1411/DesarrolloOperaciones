@@ -88,49 +88,48 @@
                             onClick="@command('nuevoDetalle')"
                             tooltiptext="Puntos de control"/>
                 </div>
-                 <listbox   model="@load(vm.listaRutaModel)" 
+                 <listbox   model="@load(vm.listaDetalleRutas)" 
                            onSelect="@command('seleccionarRegistros')" 
                            mold="paging" pageSize="15"
-                           checkmark="true"  
-                           multiple="false"               
+                           checkmark="false"  
+                           multiple="flase"               
                            nonselectableTags="*">
                     <custom-attributes org.zkoss.zul.listbox.rod="true"/>
                     <listhead>             
-                        <listheader width="30px"    ></listheader>
-                        <listheader width="35%"   sort="auto(rutNombre)" >
-                            <textbox value="@bind(vm.buscarRuta)" 
-                                     class="form-control form-control-sm"
-                                     tooltiptext="Detalle de ruta "                         
-                                     placeholder="Detalle de ruta "
-                                     onOK="@command('buscarRuta')"
-                                     onChange="self.setValue(self.getValue().toUpperCase());" />
+                        <listheader width="40%" label="Nombre"    ></listheader>
+                        <listheader width="20%" label="Tiempo"  sort="auto(rutNombre)" >                            
                         </listheader>     
-                        <listheader width="60%"  sort="auto(rutDescripcion)" >              
+                        <listheader width="20%" label="detrLongitud" sort="auto(rutDescripcion)" >              
                         </listheader>         
-                        <listheader width="5%"  label="" align="center">
+                        <listheader width="20%" label="detrLatitud" align="center">
                           
                         </listheader>
                     </listhead>  
                     <template name="model">                                                            
                         <listitem>                
-                            <listcell ></listcell>
+                           
                             <listcell zclass = "mycss-listcell">
                                 <textbox readonly="true" style="font-size:12px;background:#EBF5FB"
                                          class="form-control form-control-sm"  
-                                         value="@bind(each.rutNombre)"  />
+                                         value="@bind(each.detrNombre)"  />
                             </listcell>
                             <listcell zclass = "mycss-listcell">
-                                <textbox readonly="true" style="font-size:12px;background:#EBF5FB"
+                                <decimalbox format="#####" readonly="true" style="font-size:12px;background:#EBF5FB"
                                          class="form-control form-control-sm" 
-                                         value="@bind(each.rutDescripcion)" />
+                                         value="@bind(each.detrTiempoReal)" />
+                            </listcell>
+                               <listcell zclass = "mycss-listcell">
+                                <decimalbox format="#####.#####" readonly="true" style="font-size:12px;background:#EBF5FB"
+                                         class="form-control form-control-sm" 
+                                         value="@bind(each.detrLongitud)" />
+                            </listcell>
+                               <listcell zclass = "mycss-listcell">
+                                <decimalbox format="#####.#####" readonly="true" style="font-size:12px;background:#EBF5FB"
+                                         class="form-control form-control-sm" 
+                                         value="@bind(each.detrLatitud)" />
                             </listcell>
                             
-                            <listcell zclass = "mycss-listcell" style="font-size:12px;background:#F8F9F9">    
-                                <image src="/iconos/editar.png"
-                                       class="grow"
-                                       onClick="@command('actualizar',valor=each)" 
-                                       tooltiptext="Modificar producto"/> 
-                            </listcell>
+                          
                         </listitem>
                     </template>
                 </listbox>

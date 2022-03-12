@@ -6,7 +6,7 @@
 <?link rel="icon" type="image/x-icon" href="/iconos/deckxel.ico"?>
 <zk  contentStyle="overflow:auto" with="100%" >
     <hbox self="@define(content)" apply="org.zkoss.bind.BindComposer" 
-          viewModel="@id('vm') @init('com.ec.controlador.Rutas')" width="100%">
+          viewModel="@id('vm') @init('com.ec.controlador.Procesar')" width="100%">
 <!--        <tabbox  width="100%"  tabscroll="true" >
             <tabs >
                 <tab label="SISTEMA DE FACTURACION" sclass="menutabs"/>
@@ -23,20 +23,34 @@
                         <image  src="/iconos/excel1.png"/>
                         <button  
                             label="Subir Archivo"
-                            style="background:#FFC300"
-                            class="btn  btn-sm grow"
-                            onClick="@command('')" 
+                           onClick="@command('subirArchivo')"  
+                            class="btn  btn-sm grow btn-primary btn-sm "
+                           
                             tooltiptext="Subir Archivo 'FORMARTO'"/>
                     </div>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                         <image  src="/iconos/date-time.png"/>
 <!--                        <datebox id="db5" cols="12" format="yyyy/MM/dd" onCreate="self.value = new Date()" />
                         <timebox id="tb3" cols="12" format="a hh:mm:ss" onCreate="self.value = new Date()" />-->
-                        <datebox compact="true" value="@bind(vm.fecha)" 
+                        <datebox      value="@bind(vm.fecha)" 
+                        width="150px"
                                      style="font-weight:bold"                                               
                                      buttonVisible="true" 
-                                     lenient="true" format="dd/MM/yyyy" 
+                                     format="yyyy/MM/dd hh:mm:ss" 
                                      constraint="no empty: Ingrese la fecha "/>
+                        
+                       
+                                    <label  style="color:red;font-weight:bold" value=""  ></label>Ruta
+                                        
+                                    <combobox  model="@load(vm.listaRutas)"  
+                                               selectedItem="@bind(vm.rutaSelected)" 
+                                               style="width:150px"  
+                                               readonly="true" >
+                                        <template name="model">
+                                            <comboitem  label="@bind(each.rutNombre)"/>
+                                        </template>                                      
+                                    </combobox>
+                               
                         <button   image="/imagenes/buscar1.png"
                                       onClick="@command('buscarRutasFecha')"  
                                       class="btn btn-primary btn-sm  "
@@ -44,8 +58,8 @@
                                     
                         <button  
                             label="Procesar Datos"
-                            style="background:#D79EFF"
-                            class="btn  btn-sm grow"
+                            
+                            class="btn  btn-sm grow btn-primary btn-sm "
                             onClick="@command('')" 
                             tooltiptext="BUSCAR'"/>
                     </div>

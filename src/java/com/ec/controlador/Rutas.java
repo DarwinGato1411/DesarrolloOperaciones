@@ -4,8 +4,10 @@
  */
 package com.ec.controlador;
 
+import com.ec.entidad.DetalleRuta;
 import com.ec.entidad.Ruta;
 import com.ec.entidad.Usuario;
+import com.ec.servicio.ServicioDetalleRuta;
 import com.ec.servicio.ServicioRutas;
 
 import java.util.ArrayList;
@@ -27,16 +29,22 @@ import org.zkoss.zul.ListModelList;
 public class Rutas {
 
     ServicioRutas servicioRutas = new ServicioRutas();
+    ServicioDetalleRuta servicioDetalleRuta = new ServicioDetalleRuta();
     private List<Ruta> listaRutas = new ArrayList<Ruta>();
     private ListModelList<Ruta> listaRutaModel;
     private Set<Ruta> registrosSeleccionados = new HashSet<Ruta>();
     private String buscarRuta = "";
     private Usuario usuario;
     private Date fecha = new Date();
+    
+    
+    private List<DetalleRuta> listaDetalleRutas;
+    
     //mailing
     public Rutas() {
         consultaUsuarios();
         getRutas();
+        listaDetalleRutas= servicioDetalleRuta.findByNombre("");
         
     }
 
@@ -137,4 +145,14 @@ public class Rutas {
     public void buscarRutasFecha() {
         consultaUsuarios();
     }
+
+    public List<DetalleRuta> getListaDetalleRutas() {
+        return listaDetalleRutas;
+    }
+
+    public void setListaDetalleRutas(List<DetalleRuta> listaDetalleRutas) {
+        this.listaDetalleRutas = listaDetalleRutas;
+    }
+    
+    
 }
