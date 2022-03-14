@@ -36,6 +36,7 @@ public class Rutas {
     private String buscarRuta = "";
     private Usuario usuario;
     private Date fecha = new Date();
+    private Ruta rutaSelected;
     
     
     private List<DetalleRuta> listaDetalleRutas;
@@ -44,13 +45,29 @@ public class Rutas {
     public Rutas() {
         consultaUsuarios();
         getRutas();
-        listaDetalleRutas= servicioDetalleRuta.findByNombre("");
+       
         
+    }
+    
+    @Command
+    @NotifyChange({"listaDetalleRutas"})
+    public void seleccionarRuta() {
+
+        registrosSeleccionados = ((ListModelList<Ruta>) getListaRutaModel()).getSelection();
+
+        for (Ruta ruta : registrosSeleccionados) {
+            rutaSelected = ruta;         
+
+        }
+       consultaDetalleRutas();
     }
 
     /*ADMINISTRAR USUARIO*/
     private void consultaRutas() {
         listaRutas = servicioRutas.findByNombre(buscarRuta);
+    }
+    private void consultaDetalleRutas() {
+         listaDetalleRutas= servicioDetalleRuta.findByIdRuta(rutaSelected);
     }
     private void consultaUsuarios() {
         listaRutas = servicioRutas.findByUsuario(usuario);

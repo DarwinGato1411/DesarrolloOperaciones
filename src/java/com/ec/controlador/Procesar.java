@@ -8,20 +8,12 @@ import com.ec.entidad.Ruta;
 import com.ec.servicio.ServicioRutas;
 
 import com.ec.servicio.ServicioUsuario;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import javax.activation.MimetypesFileTypeMap;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zk.ui.util.Clients;
-import org.zkoss.zul.Filedownload;
 import org.zkoss.zul.Fileupload;
 
 /**

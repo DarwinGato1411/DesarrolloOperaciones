@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window  id="windowRuta"  position="center" class="col-12 col-sm-12 col-md-6 col-lg-4" closable="true"  
+         apply="org.zkoss.bind.BindComposer" 
+         viewModel="@id('vm') @init('com.ec.controlador.NuevaRuta')">
+    
+    <caption label="Registrar ruta" style="font-weight:bold"
+    /> 
+    <div  class="container" >
+        <div  class="row" >         
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-group "  >
+                <label value="(*) " style="color:red;font-weight:bold"/>Usuario tipo control:
+                
+                <combobox  model="@load(vm.listaUsuario)"  
+                           selectedItem="@bind(vm.usuarioSelected)" 
+                            value="@bind(vm.usuarioSelected.usuNombre)"
+                           style="width:100%"  
+                           readonly="true" >
+                    <template name="model">
+                        <comboitem  label="@bind(each.usuNombre)"/>
+                    </template>                                      
+                </combobox>
+            </div>
+            
+           
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-group "  >
+                <label value="(*) " style="color:red;font-weight:bold"/>Nombre:
+                
+                <textbox  maxlength="100"
+                          value="@bind(vm.entidad.rutNombre)"                           
+                          class="form-control" />
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-group "  >
+                <label value="(*) " style="color:red;font-weight:bold"/>Descripcion:
+                
+                <textbox  maxlength="100" 
+                          onChange="self.setValue(self.getValue().toUpperCase())"
+                          value="@bind(vm.entidad.rutDescripcion)" 
+                          class="form-control" />
+            </div>
+            
+         
+            
+            
+                     
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-group" align="center" >
+                    
+                <image src="/iconos/guardar.png"  
+                       onClick="@command('guardar')"
+                       tooltiptext="Guardar Registro"/>
+ 
+
+            </div> 
+        </div>
+   
+    </div>
+    
+                    
+                  
+</window>

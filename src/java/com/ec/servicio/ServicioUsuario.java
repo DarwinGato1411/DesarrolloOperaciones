@@ -122,4 +122,26 @@ public class ServicioUsuario {
 
         return listaUsuarios;
     }
+    
+    public List<Usuario> findUsuarioControl() {
+
+        Usuario usuarioLogeado = new Usuario();
+        List<Usuario> listaUsuarios = new ArrayList<Usuario>();
+        try {
+            System.out.println("Entra a consultar usuarios");
+            //Connection connection = em.unwrap(Connection.class);
+            em = HelperPersistencia.getEMF();
+            em.getTransaction().begin();
+            Query query = em.createQuery("SELECT a FROM Usuario a where a.usuTipoUsuario='CONTROL'");
+//            query.setParameter("usuNombre", "%"+nombre+"%");
+            listaUsuarios = (List<Usuario>) query.getResultList();
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println("Error en lsa consulta findUsuarioControl "+e.getMessage());
+        } finally {
+            em.close();
+        }
+
+        return listaUsuarios;
+    }
 }

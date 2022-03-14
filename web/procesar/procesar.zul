@@ -30,8 +30,6 @@
                     </div>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                         <image  src="/iconos/date-time.png"/>
-<!--                        <datebox id="db5" cols="12" format="yyyy/MM/dd" onCreate="self.value = new Date()" />
-                        <timebox id="tb3" cols="12" format="a hh:mm:ss" onCreate="self.value = new Date()" />-->
                         <datebox      value="@bind(vm.fecha)" 
                         width="150px"
                                      style="font-weight:bold"                                               

@@ -7,7 +7,7 @@
 <zk  contentStyle="overflow:auto" with="100%" >
     <hbox self="@define(content)" apply="org.zkoss.bind.BindComposer" 
           viewModel="@id('vm') @init('com.ec.controlador.Administrar')" width="100%">
-        <tabbox id="tboxPrincipal"  width="100%">
+        <tabbox   width="100%">
             <tabs >
                 <tab label="Rutas" sclass="menutabs" /> 
                 <tab label="Usuarios" sclass="menutabs" /> 
