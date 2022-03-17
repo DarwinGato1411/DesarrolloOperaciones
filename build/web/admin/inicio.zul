@@ -21,28 +21,40 @@
         }
         
         label {
-    display: inline-block;
-    margin-bottom: 0.5rem;
-}
+        display: inline-block;
+        margin-bottom: 0.5rem;
+        }
+        .principal-image{
+        display:flex;
+        width:98vw;
+        flex-direction: column;
+        gap:1rem;
+        }
+        
+        .principal-image > div{
+        margin:auto;
+        display:grid;
+        place-content:center;
+        margin-top:3rem;
+        }
+        .principal-image > div > span{
+        font-size:1.5rem;
+        }
+        .principal-image > img{
+        margin:auto;
+        object-fit:cover;
+        max-height:400px;
+        }
     </style>
  
     <hbox self="@define(content)" apply="org.zkoss.bind.BindComposer" 
-          viewModel="@id('vm') @init('com.ec.controlador.Administracion')" >
-        <tabbox  width="100%" >
-            <tabs >
-                <tab label="Estado de las empresas" sclass="menutabs" /> 
-            </tabs>
-            <tabpanels >
-                
-                <tabpanel  width="100%"  >                    
-                    
-                    
-                </tabpanel>
-                
-
-            </tabpanels>
-            
-        </tabbox>
+          viewModel="@id('vm') @init('com.ec.controlador.Administracion')">
+                     
+        <div class="principal-image">
+            <div>Bienvenido al proceso de rastreo</div>
+            <image class="principal-image-start" src="/imagenes/onlineReport.png" />
+        </div>
+           
     </hbox>
 
 

@@ -41,44 +41,39 @@ public class NuevaRuta {
     @AfterCompose
     public void afterCompose(@ExecutionArgParam("valor") Ruta valor, @ContextParam(ContextType.VIEW) Component view) {
         Selectors.wireComponents(view, this, false);
-
+        listaUsuario = servicioUsuario.findUsuarioControl();
         if (valor != null) {
             this.entidad = valor;
             usuarioSelected = valor.getIdUsuario();
             accion = "update";
         } else {
             this.entidad = new Ruta();
-
+            usuarioSelected = listaUsuario.isEmpty() ? null : listaUsuario.get(0);
+            this.entidad.setIdUsuario(usuarioSelected);
             accion = "create";
         }
-        listaUsuario = servicioUsuario.findUsuarioControl();
     }
 
     @Command
     public void guardar() {
         /*getCliNombre es el nombre comercial*/
         if (entidad.getIdUsuario() != null
-                    && entidad.getRutNombre() != null
-                    && entidad.getRutDescripcion() != null) {
-
+                && entidad.getRutNombre() != null
+                && entidad.getRutDescripcion() != null) {
+            entidad.setIdUsuario(usuarioSelected);
             if (accion.equals("create")) {
-
                 servicioRutas.crear(entidad);
-
                 windowRuta.detach();
-
             } else {
-
                 servicioRutas.modificar(entidad);
 //                Messagebox.show("Guardado con exito");
-
                 windowRuta.detach();
             }
 
         } else {
 
             Clients.showNotification("Verifique la informacion requerida",
-                        Clients.NOTIFICATION_TYPE_ERROR, null, "end_center", 3000, true);
+                    Clients.NOTIFICATION_TYPE_ERROR, null, "end_center", 3000, true);
         }
     }
 

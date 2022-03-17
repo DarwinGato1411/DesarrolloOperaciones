@@ -111,7 +111,7 @@ public class ServicioUsuario {
             em = HelperPersistencia.getEMF();
             em.getTransaction().begin();
             Query query = em.createQuery("SELECT a FROM Usuario a where a.usuNombre LIKE :usuNombre");
-            query.setParameter("usuNombre", "%"+nombre+"%");
+            query.setParameter("usuNombre", "%" + nombre + "%");
             listaUsuarios = (List<Usuario>) query.getResultList();
             em.getTransaction().commit();
         } catch (Exception e) {
@@ -122,7 +122,7 @@ public class ServicioUsuario {
 
         return listaUsuarios;
     }
-    
+
     public List<Usuario> findUsuarioControl() {
 
         Usuario usuarioLogeado = new Usuario();
@@ -137,7 +137,7 @@ public class ServicioUsuario {
             listaUsuarios = (List<Usuario>) query.getResultList();
             em.getTransaction().commit();
         } catch (Exception e) {
-            System.out.println("Error en lsa consulta findUsuarioControl "+e.getMessage());
+            System.out.println("Error en lsa consulta findUsuarioControl " + e.getMessage());
         } finally {
             em.close();
         }
