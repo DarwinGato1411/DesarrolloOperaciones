@@ -33,10 +33,10 @@
                            mold="paging" pageSize="15"
                            checkmark="true"  
                            multiple="false"               
-                           nonselectableTags="">
+                           nonselectableTags="*">
                     <custom-attributes org.zkoss.zul.listbox.rod="true"/>
                     <listhead>             
-                        <listheader width="30px"    ></listheader>
+                        <listheader width="30px"/>
                         <listheader width="35%"   sort="auto(rutNombre)" >
                             <textbox value="@bind(vm.buscarRuta)" 
                                      class="form-control form-control-sm"
@@ -53,7 +53,7 @@
                     </listhead>  
                     <template name="model">                                                            
                         <listitem>                
-                            <listcell ></listcell>
+                            <listcell />
                             <listcell zclass = "mycss-listcell">
                                 <textbox readonly="true" style="font-size:12px;background:#EBF5FB"
                                          class="form-control form-control-sm"  
@@ -69,7 +69,7 @@
                                 <image src="/iconos/editar.png"
                                        class="grow"
                                        onClick="@command('modificarRuta',valor=each)" 
-                                       tooltiptext="Modificar producto"/> 
+                                       tooltiptext="Modificar ruta"/> 
                             </listcell>
                         </listitem>
                     </template>
@@ -80,55 +80,61 @@
                       <label  style="color:red;font-weight:bold" value="TARIFA SELECCIONADA: "/>
                       <label  style="color:blue;font-weight:bold" value="@bind(vm.tarifaSeleted.tariDescripcion)"/>
                     
-                </div>
--->                <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group " align="start"  >
+                                </div>
+                -->                
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group " align="start"  >
                     <button  src="/iconos/nuevo_pro-24.png"
-                            label="Puntos de control"
-                            class="btn btn btn-secondary btn-sm "
-                            onClick="@command('nuevoDetalle')"
-                            tooltiptext="Puntos de control"/>
+                             label="Puntos de control"
+                             class="btn btn btn-secondary btn-sm "
+                             onClick="@command('addCheckPoint')"
+                             tooltiptext="Puntos de control"/>
                 </div>
-                 <listbox   model="@load(vm.listaDetalleRutas)" 
+                <listbox   model="@load(vm.listaDetalleRutas)" 
                            onSelect="@command('seleccionarRegistros')" 
                            mold="paging" pageSize="15"
                            checkmark="false"  
-                           multiple="flase"               
+                           multiple="false"               
                            nonselectableTags="*">
                     <custom-attributes org.zkoss.zul.listbox.rod="true"/>
                     <listhead>             
                         <listheader width="40%" label="Nombre"    ></listheader>
                         <listheader width="20%" label="Tiempo"  sort="auto(rutNombre)" >                            
                         </listheader>     
-                        <listheader width="20%" label="detrLongitud" sort="auto(rutDescripcion)" >              
+                        <listheader width="18%" label="detrLongitud" sort="auto(rutDescripcion)" >              
                         </listheader>         
-                        <listheader width="20%" label="detrLatitud" align="center">
+                        <listheader width="17%" label="detrLatitud" align="center">
                           
                         </listheader>
+                        <listheader width="5%" label="" align="center"/>
                     </listhead>  
                     <template name="model">                                                            
-                        <listitem>                
-                           
+                        <listitem>
                             <listcell zclass = "mycss-listcell">
                                 <textbox readonly="true" style="font-size:12px;background:#EBF5FB"
                                          class="form-control form-control-sm"  
                                          value="@bind(each.detrNombre)"  />
                             </listcell>
                             <listcell zclass = "mycss-listcell">
-                                <decimalbox format="#####" readonly="true" style="font-size:12px;background:#EBF5FB"
-                                         class="form-control form-control-sm" 
-                                         value="@bind(each.detrTiempoReal)" />
+                                <intbox style="font-size:12px;background:#EBF5FB"
+                                        class="form-control form-control-sm" 
+                                        value="@bind(each.detrTiempoReal)" />
                             </listcell>
-                               <listcell zclass = "mycss-listcell">
-                                <decimalbox format="#####.#####" readonly="true" style="font-size:12px;background:#EBF5FB"
-                                         class="form-control form-control-sm" 
-                                         value="@bind(each.detrLongitud)" />
+                            <listcell zclass = "mycss-listcell">
+                                <doublebox style="font-size:12px;background:#EBF5FB"
+                                           class="form-control form-control-sm" 
+                                           value="@bind(each.detrLongitud)" />
                             </listcell>
-                               <listcell zclass = "mycss-listcell">
-                                <decimalbox format="#####.#####" readonly="true" style="font-size:12px;background:#EBF5FB"
-                                         class="form-control form-control-sm" 
-                                         value="@bind(each.detrLatitud)" />
+                            <listcell zclass = "mycss-listcell">
+                                <doublebox style="font-size:12px;background:#EBF5FB"
+                                           class="form-control form-control-sm" 
+                                           value="@bind(each.detrLatitud)" />
                             </listcell>
-                            
+                            <listcell zclass = "mycss-listcell" style="font-size:12px;background:#F8F9F9">    
+                                <image src="/iconos/editar.png"
+                                       class="grow"
+                                       onClick="@command('updateCheckPoint',valor=each)" 
+                                       tooltiptext="Modificar punto de control"/> 
+                            </listcell>
                           
                         </listitem>
                     </template>

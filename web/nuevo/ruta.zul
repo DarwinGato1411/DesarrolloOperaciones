@@ -11,9 +11,8 @@
                 <label value="(*) " style="color:red;font-weight:bold"/>Usuario tipo control:
                 
                 <combobox  model="@load(vm.listaUsuario)"  
-                           selectedItem="@bind(vm.usuarioSelected)" 
-                            value="@bind(vm.usuarioSelected.usuNombre)"
-                           style="width:100%"  
+                           selectedItem="@bind(vm.entidad.idUsuario)"
+                           style="width:100%"
                            readonly="true" >
                     <template name="model">
                         <comboitem  label="@bind(each.usuNombre)"/>
@@ -36,19 +35,13 @@
                           onChange="self.setValue(self.getValue().toUpperCase())"
                           value="@bind(vm.entidad.rutDescripcion)" 
                           class="form-control" />
-            </div>
-            
-         
-            
-            
-                     
+            </div>     
             <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-group" align="center" >
                     
                 <image src="/iconos/guardar.png"  
                        onClick="@command('guardar')"
                        tooltiptext="Guardar Registro"/>
  
-
             </div> 
         </div>
    

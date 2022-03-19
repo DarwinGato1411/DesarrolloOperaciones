@@ -4,8 +4,9 @@
  */
 package com.ec.servicio;
 
-import com.ec.entidad.Ruta;
+import com.ec.entidad.TrackPoints;
 import com.ec.entidad.Usuario;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,7 +18,7 @@ import javax.persistence.Query;
  *
  * @author gato
  */
-public class ServicioRutas {
+public class ServicioTrackPoint {
 
     private EntityManager em;
 
@@ -29,72 +30,72 @@ public class ServicioRutas {
         this.em = em;
     }
 
-    public void crear(Ruta ruta) {
+    public void crear(TrackPoints trackPoints) {
 
         try {
             em = HelperPersistencia.getEMF();
             em.getTransaction().begin();
-            em.persist(ruta);
+            em.persist(trackPoints);
             em.getTransaction().commit();
         } catch (Exception e) {
             if (em != null) {
                 em.getTransaction().rollback();
             }
-            System.out.println("Error en insertar ruta " + e.getMessage());
+            System.out.println("Error en insertar trackPoints " + e.getMessage());
         } finally {
             em.close();
         }
 
     }
 
-    public void eliminar(Ruta ruta) {
+    public void eliminar(TrackPoints trackPoints) {
 
         try {
             em = HelperPersistencia.getEMF();
             em.getTransaction().begin();
-            em.remove(em.merge(ruta));
+            em.remove(em.merge(trackPoints));
             em.getTransaction().commit();
 
         } catch (Exception e) {
             if (em != null) {
                 em.getTransaction().rollback();
             }
-            System.out.println("Error en eliminar  ruta " + e.getMessage());
+            System.out.println("Error en eliminar  trackPoints " + e.getMessage());
         } finally {
             em.close();
         }
 
     }
 
-    public void modificar(Ruta ruta) {
+    public void modificar(TrackPoints trackPoints) {
 
         try {
             em = HelperPersistencia.getEMF();
             em.getTransaction().begin();
-            em.merge(ruta);
+            em.merge(trackPoints);
             em.getTransaction().commit();
         } catch (Exception e) {
             if (em != null) {
                 em.getTransaction().rollback();
             }
-            System.out.println("Error en insertar ruta " + e.getMessage());
+            System.out.println("Error en insertar trackPoints " + e.getMessage());
         } finally {
             em.close();
         }
 
     }
 
-    public List<Ruta> findByNombre(String nombre) {
+    public List<TrackPoints> findByNombre(String nombre) {
 
-        List<Ruta> listaRutas = new ArrayList<Ruta>();
+        List<TrackPoints> listaTrackPointss = new ArrayList<TrackPoints>();
         try {
-            System.out.println("Entra a consultar rutas");
+            System.out.println("Entra a consultar trackPointss");
             //Connection connection = em.unwrap(Connection.class);
             em = HelperPersistencia.getEMF();
             em.getTransaction().begin();
-            Query query = em.createQuery("SELECT a FROM Ruta a where a.rutNombre LIKE :rutNombre");
+            Query query = em.createQuery("SELECT a FROM TrackPoints a where a.rutNombre LIKE :rutNombre");
             query.setParameter("rutNombre", "%" + nombre + "%");
-            listaRutas = (List<Ruta>) query.getResultList();
+            listaTrackPointss = (List<TrackPoints>) query.getResultList();
             em.getTransaction().commit();
         } catch (Exception e) {
             System.out.println("Error en la consulta findByNombre " + e.getMessage());
@@ -102,19 +103,19 @@ public class ServicioRutas {
             em.close();
         }
 
-        return listaRutas;
+        return listaTrackPointss;
     }
 
-    public List<Ruta> findByUsuario(Usuario usuario) {
+    public List<TrackPoints> findByUsuario(Usuario usuario) {
 
-        List<Ruta> listaRutas = new ArrayList<Ruta>();
+        List<TrackPoints> listaTrackPointss = new ArrayList<TrackPoints>();
         try {
 
             em = HelperPersistencia.getEMF();
             em.getTransaction().begin();
-            Query query = em.createQuery("SELECT a FROM Ruta a WHERE a.idUsuario=:usuario");
+            Query query = em.createQuery("SELECT a FROM TrackPoints a WHERE a.idUsuario=:usuario");
             query.setParameter("usuario", usuario);
-            listaRutas = (List<Ruta>) query.getResultList();
+            listaTrackPointss = (List<TrackPoints>) query.getResultList();
             em.getTransaction().commit();
         } catch (Exception e) {
             System.out.println("Error en la consulta findByUsuario " + e.getMessage());
@@ -122,12 +123,12 @@ public class ServicioRutas {
             em.close();
         }
 
-        return listaRutas;
+        return listaTrackPointss;
     }
+    
+    public List<TrackPoints> findByFecha(Date fecha) {
 
-    public List<Ruta> findByFecha(Date fecha) {
-
-        List<Ruta> listaRutas = new ArrayList<Ruta>();
+        List<TrackPoints> listaTrackPointss = new ArrayList<TrackPoints>();
         try {
             String pattern = "yyyy MMMMM dd  HH:mm:ss";
             SimpleDateFormat simpleDateFormat
@@ -150,35 +151,18 @@ public class ServicioRutas {
             System.out.println("fin " + paramFin);
             em = HelperPersistencia.getEMF();
             em.getTransaction().begin();
-            Query query = em.createQuery("SELECT u FROM Ruta u WHERE  u. BETWEEN :inicio and :fin");
+            Query query = em.createQuery("SELECT u FROM TrackPoints u WHERE  u.trackFechaCompleta BETWEEN :inicio and :fin");
             query.setParameter("inicio", paramInicio);
             query.setParameter("fin", paramFin);
-            listaRutas = (List<Ruta>) query.getResultList();
-            System.out.println("RUTAS " + listaRutas.size());
+            listaTrackPointss = (List<TrackPoints>) query.getResultList();
+            System.out.println("RUTAS " + listaTrackPointss.size());
             em.getTransaction().commit();
-        } catch (Exception e) {
-            System.out.println("Error en lsa consulta Rutas  findByFecha  " + e.getMessage());
+        } catch (ParseException e) {
+            System.out.println("Error en lsa consulta TrackPointss  findByFecha  " + e.getMessage());
         } finally {
             em.close();
         }
 
-        return listaRutas;
-    }
-
-    public List<Ruta> findAllRoutes() {
-        List<Ruta> listRoutes = new ArrayList<Ruta>();
-        try {
-            em = HelperPersistencia.getEMF();
-            em.getTransaction().begin();
-            Query query = em.createQuery("SELECT r FROM Ruta r");
-            listRoutes = (List<Ruta>) query.getResultList();
-            System.out.println("RUTAS " + listRoutes.size());
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            System.out.println("Error en el metodo findAllRoutes al consultar todas las rutas  " + e.getMessage());
-        } finally {
-            em.close();
-        }
-        return listRoutes;
+        return listaTrackPointss;
     }
 }

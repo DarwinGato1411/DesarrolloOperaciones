@@ -56,6 +56,8 @@ public class Usuario implements Serializable {
     private Collection<Ruta> rutaCollection;
     @OneToMany(mappedBy = "idUsuario")
     private Collection<RutaProcesada> rutaProcesadaCollection;
+    @OneToMany(mappedBy = "idUsuario")
+    private Collection<TrackPoints> trackPointsCollection;
 
     public Usuario() {
     }
@@ -136,6 +138,14 @@ public class Usuario implements Serializable {
         this.rutaProcesadaCollection = rutaProcesadaCollection;
     }
 
+    public Collection<TrackPoints> getTrackPointsCollection() {
+        return trackPointsCollection;
+    }
+
+    public void setTrackPointsCollection(Collection<TrackPoints> trackPointsCollection) {
+        this.trackPointsCollection = trackPointsCollection;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -160,5 +170,5 @@ public class Usuario implements Serializable {
     public String toString() {
         return "com.ec.entidad.Usuario[ idUsuario=" + idUsuario + " ]";
     }
-    
+
 }

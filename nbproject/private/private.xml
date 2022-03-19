@@ -12,12 +12,25 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/D:/PROYECTOS/CESAR%20ZUÑIGA/Sistema/DesarrolloOperaciones/src/java/com/ec/controlador/MenuOpciones.java</file>
             <file>file:/D:/PROYECTOS/CESAR%20ZUÑIGA/Sistema/DesarrolloOperaciones/src/java/com/ec/controlador/Rutas.java</file>
             <file>file:/D:/PROYECTOS/CESAR%20ZUÑIGA/Sistema/DesarrolloOperaciones/src/java/com/ec/controlador/NuevaRuta.java</file>
             <file>file:/D:/PROYECTOS/CESAR%20ZUÑIGA/Sistema/DesarrolloOperaciones/src/java/com/ec/seguridad/AutentificadorLogeo.java</file>
             <file>file:/D:/PROYECTOS/CESAR%20ZUÑIGA/Sistema/DesarrolloOperaciones/src/java/com/ec/controlador/LoginController.java</file>
             <file>file:/D:/PROYECTOS/CESAR%20ZUÑIGA/Sistema/DesarrolloOperaciones/src/java/com/ec/entidad/Ruta.java</file>
+=======
+            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/src/java/com/ec/controlador/Procesar.java</file>
+            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/src/java/com/ec/controlador/Rutas.java</file>
+            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/web/nuevo/ruta.zul</file>
+            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/src/java/com/ec/entidad/Ruta.java</file>
+            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/src/java/com/ec/controlador/CheckPoint.java</file>
+            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/src/java/com/ec/controlador/NuevaRuta.java</file>
+            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/src/java/com/ec/entidad/DetalleRuta.java</file>
+            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/web/administrar/rutas.zul</file>
+            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/web/nuevo/checkPoint.zul</file>
+            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/src/java/com/ec/entidad/Usuario.java</file>
+>>>>>>> 469aac346f49b785eed2f770156e3a6fbd995c88
         </group>
     </open-files>
 </project-private>

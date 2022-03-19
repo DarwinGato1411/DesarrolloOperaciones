@@ -39,7 +39,7 @@ public class DetalleRuta implements Serializable {
     @Size(max = 100)
     @Column(name = "detr_nombre")
     private String detrNombre;
-      @Column(name = "detrp_tiempo_real")
+    @Column(name = "detrp_tiempo_real")
     private Integer detrTiempoReal;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "detr_longitud")
@@ -57,6 +57,17 @@ public class DetalleRuta implements Serializable {
     private Ruta idRuta;
 
     public DetalleRuta() {
+    }
+
+    public DetalleRuta(String detrNombre, Integer detrTiempoReal, BigDecimal detrLongitud, BigDecimal detrLatitud, Boolean detrInicio, Integer detrOrden, Boolean detrFin, Ruta idRuta) {
+        this.detrNombre = detrNombre;
+        this.detrTiempoReal = detrTiempoReal;
+        this.detrLongitud = detrLongitud;
+        this.detrLatitud = detrLatitud;
+        this.detrInicio = detrInicio;
+        this.detrOrden = detrOrden;
+        this.detrFin = detrFin;
+        this.idRuta = idRuta;
     }
 
     public DetalleRuta(Integer idDetalleRuta) {
@@ -159,5 +170,5 @@ public class DetalleRuta implements Serializable {
     public String toString() {
         return "com.ec.entidad.DetalleRuta[ idDetalleRuta=" + idDetalleRuta + " ]";
     }
-    
+
 }

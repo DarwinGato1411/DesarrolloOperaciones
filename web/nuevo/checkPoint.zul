@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window  id="windowCheckPoint"  position="center" class="col-12 col-sm-12 col-md-6 col-lg-4" closable="true"  
+         apply="org.zkoss.bind.BindComposer" 
+         viewModel="@id('vm') @init('com.ec.controlador.CheckPoint')">
+    <caption label="Registrar punto de control" style="font-weight:bold"
+    /> 
+    <div  class="container" >
+        <div  class="row" >         
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-group "  >
+                <label value="(*) " style="color:red;font-weight:bold"/>Seleccione la ruta:
+                
+                <combobox  model="@load(vm.listRoutes)"  
+                           selectedItem="@bind(vm.checkPoint.idRuta)"
+                           style="width:100%"  
+                           readonly="true" >
+                    <template name="model">
+                        <comboitem  label="@bind(each.rutNombre)"/>
+                    </template>                                      
+                </combobox>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-group "  >
+                <label value="(*) " style="color:red;font-weight:bold"/>Nombre:
+                
+                <textbox  maxlength="100"
+                          value="@bind(vm.checkPoint.detrNombre)"                           
+                          class="form-control" />
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-group "  >
+                <label value="(*) " style="color:red;font-weight:bold"/>Tiempo en minutos: 
+                <intbox value="@bind(vm.checkPoint.detrTiempoReal)"
+                        class="form-control" />
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-group "  >
+                <label value="(*) " style="color:red;font-weight:bold"/>Latitud del punto: 
+                <doublebox value="@bind(vm.checkPoint.detrLatitud)"
+                           class="form-control" />
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-group "  >
+                <label value="(*) " style="color:red;font-weight:bold"/>Longitud del punto: 
+                <doublebox value="@bind(vm.checkPoint.detrLongitud)"
+                           class="form-control" />
+            </div>    
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-group" align="center" > 
+                <image src="/iconos/guardar.png"  
+                       onClick="@command('saveCheckPoint')"
+                       tooltiptext="Guardar Registro"/>
+            </div> 
+        </div>
+   
+    </div>
+              
+</window>
