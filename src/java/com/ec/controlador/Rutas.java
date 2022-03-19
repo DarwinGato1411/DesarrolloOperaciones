@@ -45,7 +45,7 @@ public class Rutas {
     public Rutas() {
         consultaUsuarios();
         getRutas();
-       
+   
         
     }
     

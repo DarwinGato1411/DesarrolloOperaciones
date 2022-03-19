@@ -33,9 +33,6 @@ public class AutentificadorLogeo implements AutentificadorService, Serializable 
     public boolean login(String nombreUsuario, String claveUsuario) {
         Usuario dato = (Usuario) servicioUsuario.FindUsuarioPorNombre(nombreUsuario);
 
-//        System.out.println("usuario " + nombreUsuario);
-//        System.out.println("Valor recuperado");
-//        System.out.println("-------------->"+dato.getUsuLogin());
         if (dato == null) {
             return false;
         }
