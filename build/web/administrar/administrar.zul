@@ -10,14 +10,12 @@
         <tabbox   width="100%">
             <tabs >
                 <tab label="Rutas" sclass="menutabs" /> 
-                <tab label="Usuarios" sclass="menutabs" /> 
-                
+                <tab label="Usuarios" sclass="menutabs" />              
             </tabs>
             <tabpanels >
                 <tabpanel height="100%" hflex="min">
                     <include src="/administrar/rutas.zul"/>  
-                </tabpanel>      
-              
+                </tabpanel>                    
                 <tabpanel height="100%" hflex="min">
                     <listbox width="100%" model="@load(vm.listaUsuarios)" nonselectableTags="*"  mold="paging" pageSize="9">
                         <auxhead>
@@ -31,13 +29,9 @@
                                                    tooltiptext="Nuevo usuario"/>
                                         </div>
                                     </div>
-                                </div> 
-                               
+                                </div>                                
                             </auxheader>
-                        </auxhead>
-                        
-                                    
-                             
+                        </auxhead>                            
                         <listhead sizable="true">
                             <listheader label="Nombre de la cuenta"  align="left" width="45%"></listheader>
                             <listheader label="Usuario"  align="left" width="20%"></listheader>
@@ -45,8 +39,6 @@
                             <listheader label="Tipo Usuario"  align="left" width="20%"></listheader>
                             <listheader label=""  align="center" width="5%"></listheader>
                         </listhead>
-                   
-                
                         <template name="model">
                             <listitem width="100%" > 
                                 <listcell  zclass = "mycss-listcell">
@@ -72,19 +64,12 @@
                                            class="grow"
                                            onClick="@command('modificarUsario',valor=each)" 
                                            tooltiptext="Editar usuario"/> 
-                                    
                                 </listcell>     
-                               
                             </listitem>
-                        </template>   
-                       
+                        </template>                          
                     </listbox>
-                </tabpanel>              
-                
-            </tabpanels>
-            
+                </tabpanel>                             
+            </tabpanels>           
         </tabbox>
     </hbox>
-
-
 </zk>

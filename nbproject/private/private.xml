@@ -12,16 +12,11 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/src/java/com/ec/controlador/Procesar.java</file>
             <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/src/java/com/ec/controlador/Rutas.java</file>
-            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/web/nuevo/ruta.zul</file>
-            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/src/java/com/ec/entidad/Ruta.java</file>
-            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/src/java/com/ec/controlador/CheckPoint.java</file>
-            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/src/java/com/ec/controlador/NuevaRuta.java</file>
-            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/src/java/com/ec/entidad/DetalleRuta.java</file>
+            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/src/java/com/ec/controlador/AgregarUsuario.java</file>
             <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/web/administrar/rutas.zul</file>
-            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/web/nuevo/checkPoint.zul</file>
-            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/src/java/com/ec/entidad/Usuario.java</file>
+            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/src/java/com/ec/servicio/ServiceCheckPoint.java</file>
+            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/src/java/com/ec/servicio/ServicioRutas.java</file>
         </group>
     </open-files>
 </project-private>

@@ -6,18 +6,7 @@
     /> 
     <div  class="container" >
         <div  class="row" >         
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-group "  >
-                <label value="(*) " style="color:red;font-weight:bold"/>Seleccione la ruta:
-                
-                <combobox  model="@load(vm.listRoutes)"  
-                           selectedItem="@bind(vm.checkPoint.idRuta)"
-                           style="width:100%"  
-                           readonly="true" >
-                    <template name="model">
-                        <comboitem  label="@bind(each.rutNombre)"/>
-                    </template>                                      
-                </combobox>
-            </div>
+           
             <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-group "  >
                 <label value="(*) " style="color:red;font-weight:bold"/>Nombre:
                 

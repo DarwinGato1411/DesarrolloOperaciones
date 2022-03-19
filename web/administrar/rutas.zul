@@ -13,16 +13,30 @@
         div.z-listbox-body .z-listcell {
         padding: 0px;
         }
+        .content-flex{
+            display:flex;
+            flex-flow: row wrap;
+            gap:1rem;
+        }
         
+        .content-flex-route, .content-flex-checkPoints{
+            flex-basis: calc(50% - 1rem);
+        }
+        
+        @media (max-width: 1024px){
+            .content-flex-route, .content-flex-checkPoints{
+                flex-basis: 100%;
+            }
+        }
+                
     </style>
   
  
-    <div class="container-fluid">
-        <div class="row">
-           
-            <div class="col-12 col-sm-12 col-md-4 col-lg-4 form-group " align="start"  >
+    <div>
+        <div class="content-flex">
+            <div class="content-flex-route" >
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group " align="start"  >
-                    <button  src="/iconos/nuevo_pro-24.png"
+                    <button src="/iconos/nuevo_pro-24.png"
                             label="Nueva ruta"
                             class="btn btn btn-secondary btn-sm "
                             onClick="@command('agregarRuta')"
@@ -36,8 +50,8 @@
                            nonselectableTags="*">
                     <custom-attributes org.zkoss.zul.listbox.rod="true"/>
                     <listhead>             
-                        <listheader width="30px"/>
-                        <listheader width="35%"   sort="auto(rutNombre)" >
+                        <listheader width="5%"/>
+                        <listheader width="25%"   sort="auto(rutNombre)" >
                             <textbox value="@bind(vm.buscarRuta)" 
                                      class="form-control form-control-sm"
                                      tooltiptext="Ruta "                         
@@ -45,11 +59,9 @@
                                      onOK="@command('buscarRuta')"
                                      onChange="self.setValue(self.getValue().toUpperCase());" />
                         </listheader>     
-                        <listheader width="60%" label="Descripcion" sort="auto(rutDescripcion)" >              
-                        </listheader>         
-                        <listheader width="10%"  label="" align="center">
-                          
-                        </listheader>
+                        <listheader width="60%" label="Descripcion" sort="auto(rutDescripcion)" />                      
+                        <listheader width="5%"  label="" align="center"/>
+                        <listheader width="5%"  label="" align="center"/>
                     </listhead>  
                     <template name="model">                                                            
                         <listitem>                
@@ -71,11 +83,17 @@
                                        onClick="@command('modificarRuta',valor=each)" 
                                        tooltiptext="Modificar ruta"/> 
                             </listcell>
+                            <listcell zclass = "mycss-listcell" style="font-size:12px;background:#F8F9F9">    
+                                <image src="/iconos/delete.png"
+                                       class="grow"
+                                       onClick="@command('deleteRoute',valor=each)" 
+                                       tooltiptext="Eliminar ruta"/> 
+                            </listcell>
                         </listitem>
                     </template>
                 </listbox>
             </div>
-            <div class="col-12 col-sm-12 col-md-7 col-lg-7 form-group " align="start"  >
+            <div class="content-flex-checkPoints" >
 <!--                <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group " align="start"  >
                       <label  style="color:red;font-weight:bold" value="TARIFA SELECCIONADA: "/>
                       <label  style="color:blue;font-weight:bold" value="@bind(vm.tarifaSeleted.tariDescripcion)"/>
@@ -98,13 +116,10 @@
                     <custom-attributes org.zkoss.zul.listbox.rod="true"/>
                     <listhead>             
                         <listheader width="40%" label="Nombre"    ></listheader>
-                        <listheader width="20%" label="Tiempo"  sort="auto(rutNombre)" >                            
-                        </listheader>     
-                        <listheader width="18%" label="detrLongitud" sort="auto(rutDescripcion)" >              
-                        </listheader>         
-                        <listheader width="17%" label="detrLatitud" align="center">
-                          
-                        </listheader>
+                        <listheader width="20%" label="Tiempo"  sort="auto(rutNombre)" />     
+                        <listheader width="18%" label="detrLongitud" sort="auto(rutDescripcion)" />         
+                        <listheader width="17%" label="detrLatitud" align="center"/>
+                        <listheader width="5%" label="" align="center"/>
                         <listheader width="5%" label="" align="center"/>
                     </listhead>  
                     <template name="model">                                                            
@@ -135,13 +150,16 @@
                                        onClick="@command('updateCheckPoint',valor=each)" 
                                        tooltiptext="Modificar punto de control"/> 
                             </listcell>
-                          
+                            <listcell zclass = "mycss-listcell" style="font-size:12px;background:#F8F9F9">    
+                                <image src="/iconos/delete.png"
+                                       class="grow"
+                                       onClick="@command('deleteCheckPoint',valor=each)" 
+                                       tooltiptext="Eliminar punto de control"/> 
+                            </listcell>
                         </listitem>
                     </template>
                 </listbox>
             </div>
-        </div>
-                
+        </div>        
     </div>
-           
 </div>
