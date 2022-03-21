@@ -14,9 +14,11 @@
         <group>
             <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/src/java/com/ec/controlador/Rutas.java</file>
             <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/src/java/com/ec/controlador/AgregarUsuario.java</file>
-            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/web/administrar/rutas.zul</file>
+            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/src/conf/persistence.xml</file>
+            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/web/META-INF/context.xml</file>
             <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/src/java/com/ec/servicio/ServiceCheckPoint.java</file>
             <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/src/java/com/ec/servicio/ServicioRutas.java</file>
+            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/web/WEB-INF/glassfish-web.xml</file>
         </group>
     </open-files>
 </project-private>
