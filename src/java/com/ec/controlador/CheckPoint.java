@@ -42,7 +42,7 @@ public class CheckPoint {
     Window windowCheckPoint;
 
     @AfterCompose
-    public void afterCompose(@ExecutionArgParam("valor") DetalleRuta valor, @ContextParam(ContextType.VIEW) Component view) {
+    public void afterCompose(@ExecutionArgParam("valor1") Ruta ruta, @ExecutionArgParam("valor") DetalleRuta valor, @ContextParam(ContextType.VIEW) Component view) {
         Selectors.wireComponents(view, this, false);
         findAllRoutes();
         if (valor != null) {
@@ -51,7 +51,7 @@ public class CheckPoint {
             action = "update";
         } else {
             this.checkPoint = new DetalleRuta();
-            routeSelected = listRoutes.isEmpty() ? null : listRoutes.get(0);
+            routeSelected = ruta;
             this.checkPoint.setIdRuta(routeSelected);
             action = "create";
         }
