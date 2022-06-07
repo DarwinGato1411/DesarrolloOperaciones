@@ -3,7 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/D:/PROYECTOS/CESAR%20ZUÑIGA/Sistema/DesarrolloOperaciones/src/conf/persistence.xml</file>
+=======
+            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/src/java/com/ec/controlador/Rutas.java</file>
+            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/src/java/com/ec/controlador/AgregarUsuario.java</file>
+            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/src/conf/persistence.xml</file>
+            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/web/META-INF/context.xml</file>
+            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/src/java/com/ec/servicio/ServiceCheckPoint.java</file>
+            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/src/java/com/ec/servicio/ServicioRutas.java</file>
+            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/web/WEB-INF/glassfish-web.xml</file>
+>>>>>>> 4f74191204260199dac98bc4a5967f84277bb002
         </group>
     </open-files>
 </project-private>

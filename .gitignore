@@ -51,3 +51,7 @@ build/
 /DesarrolloOperaciones/nbproject/*
 /DesarrolloOperaciones/nbproject/private/**
 /DesarrolloOperaciones/nbproject/private/private.properties
+build/web/META-INF/context.xml
+build/web/WEB-INF/glassfish-web.xml
+nbproject/private/private.xml
+nbproject/project.properties
