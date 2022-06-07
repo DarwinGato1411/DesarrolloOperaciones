@@ -48,9 +48,21 @@ public class DetalleRutaProcesada implements Serializable {
     @Column(name = "detrp_hora")
     @Temporal(TemporalType.TIME)
     private Date detrpHora;
+    @Column(name = "detrp_hora_programada")
+    @Temporal(TemporalType.TIME)
+    private Date detrpHoraProgramada;
+    @Column(name = "detrp_hora_llegada")
+    @Temporal(TemporalType.TIME)
+    private Date detrpHoraLlegada;
+    @Column(name = "adelanto")
+    private BigDecimal adelanto;
+    @Column(name = "punto_control")
+    private String puntoControl;
     @JoinColumn(name = "id_ruta_procesada", referencedColumnName = "id_ruta_procesada")
     @ManyToOne
     private RutaProcesada idRutaProcesada;
+    @Column(name = "id_ruta")
+    private Integer idRuta;
 
     public DetalleRutaProcesada() {
     }
@@ -107,6 +119,46 @@ public class DetalleRutaProcesada implements Serializable {
         this.idRutaProcesada = idRutaProcesada;
     }
 
+    public Date getDetrpHoraProgramada() {
+        return detrpHoraProgramada;
+    }
+
+    public void setDetrpHoraProgramada(Date detrpHoraProgramada) {
+        this.detrpHoraProgramada = detrpHoraProgramada;
+    }
+
+    public Date getDetrpHoraLlegada() {
+        return detrpHoraLlegada;
+    }
+
+    public void setDetrpHoraLlegada(Date detrpHoraLlegada) {
+        this.detrpHoraLlegada = detrpHoraLlegada;
+    }
+
+    public BigDecimal getAdelanto() {
+        return adelanto;
+    }
+
+    public void setAdelanto(BigDecimal adelanto) {
+        this.adelanto = adelanto;
+    }
+
+    public String getPuntoControl() {
+        return puntoControl;
+    }
+
+    public void setPuntoControl(String puntoControl) {
+        this.puntoControl = puntoControl;
+    }
+
+    public Integer getIdRuta() {
+        return idRuta;
+    }
+
+    public void setIdRuta(Integer idRuta) {
+        this.idRuta = idRuta;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -131,5 +183,5 @@ public class DetalleRutaProcesada implements Serializable {
     public String toString() {
         return "com.ec.entidad.DetalleRutaProcesada[ idDetRutProcesada=" + idDetRutProcesada + " ]";
     }
-    
+
 }

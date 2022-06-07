@@ -57,6 +57,10 @@ public class MenuOpciones extends SelectorComposer<Component> {
     public void buttonProcesar() {
         Executions.sendRedirect("/procesar/procesar.zul");
     }
+    @Listen("onClick = #btnHistotial")
+    public void btnHistotial() {
+        Executions.sendRedirect("/procesar/historial.zul");
+    }
 
     @Command
     public void nuevoCliente() {

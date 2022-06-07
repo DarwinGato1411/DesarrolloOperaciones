@@ -6,6 +6,7 @@
 package com.ec.entidad;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -49,9 +50,13 @@ public class RutaProcesada implements Serializable {
     @Column(name = "rutp_inicio")
     @Temporal(TemporalType.TIME)
     private Date rutpInicio;
+  
     @Size(max = 150)
     @Column(name = "rutp_respnasable")
     private String rutpRespnasable;
+    @Column(name = "id_ruta")
+    private Integer idRuta;
+ 
     @OneToMany(mappedBy = "idRutaProcesada")
     private Collection<DetalleRutaProcesada> detalleRutaProcesadaCollection;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
@@ -121,6 +126,15 @@ public class RutaProcesada implements Serializable {
         this.idUsuario = idUsuario;
     }
 
+    public Integer getIdRuta() {
+        return idRuta;
+    }
+
+    public void setIdRuta(Integer idRuta) {
+        this.idRuta = idRuta;
+    }
+
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -145,5 +159,5 @@ public class RutaProcesada implements Serializable {
     public String toString() {
         return "com.ec.entidad.RutaProcesada[ idRutaProcesada=" + idRutaProcesada + " ]";
     }
-    
+
 }

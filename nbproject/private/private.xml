@@ -1,26 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
-        <file>
-            <url>src/java/com/ec/controlador/ListaRetenciones.java</url>
-            <bookmark id="1">
-                <name/>
-                <line>601</line>
-                <key/>
-            </bookmark>
-        </file>
-    </editor-bookmarks>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group/>
-=======
         <group>
-            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/src/java/com/ec/controlador/Rutas.java</file>
-            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/src/java/com/ec/controlador/AgregarUsuario.java</file>
-            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/web/administrar/rutas.zul</file>
-            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/src/java/com/ec/servicio/ServiceCheckPoint.java</file>
-            <file>file:/C:/Users/Omar/Documents/Deckxel/DesarrolloOperaciones/src/java/com/ec/servicio/ServicioRutas.java</file>
+            <file>file:/D:/PROYECTOS/CESAR%20ZUÑIGA/Sistema/DesarrolloOperaciones/src/conf/persistence.xml</file>
         </group>
->>>>>>> fb05fd119791d6a9eda7ee8af382d3a5e105b373
     </open-files>
 </project-private>

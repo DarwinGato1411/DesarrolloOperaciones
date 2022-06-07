@@ -4,15 +4,19 @@
  */
 package com.ec.controlador;
 
+import com.ec.entidad.DetalleRutaProcesada;
 import com.ec.entidad.Ruta;
 import com.ec.entidad.TrackPoints;
 import com.ec.seguridad.EnumSesion;
 import com.ec.seguridad.UserCredential;
 import com.ec.servicio.ServicioDetalleRuta;
+import com.ec.servicio.ServicioDetalleRutaProcesada;
+import com.ec.servicio.ServicioGeneral;
 import com.ec.servicio.ServicioRutas;
 import com.ec.servicio.ServicioTrackPoint;
 
 import com.ec.servicio.ServicioUsuario;
+import com.ec.untilitario.Reportes;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -23,6 +27,7 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.util.media.AMedia;
 import org.zkoss.zk.ui.Session;
 import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.util.Clients;
@@ -45,10 +50,42 @@ public class Procesar {
     private Ruta rutaSelected = null;
     UserCredential credential = new UserCredential();
 
+    ServicioDetalleRutaProcesada servicioDetalleRutaProcesada = new ServicioDetalleRutaProcesada();
+
+    ServicioGeneral servicioGeneral = new ServicioGeneral();
+
+    private List<DetalleRutaProcesada> listaPuntoControl = new ArrayList<DetalleRutaProcesada>();
+
+    AMedia fileContent = null;
+
     public Procesar() {
         Session sess = Sessions.getCurrent();
         credential = (UserCredential) sess.getAttribute(EnumSesion.userCredential.getNombre());
         consultarRutasUsuario();
+    }
+
+    private void consultarRutaProcesada() {
+        listaPuntoControl = servicioDetalleRutaProcesada.findByPuntoControlUsuarioFechas("", credential.getUsuarioSistema(), fecha, fecha, rutaSelected.getIdRuta());
+    }
+
+    @Command
+    @NotifyChange({"listaPuntoControl", "inicio", "fin", "fileContent"})
+    public void procesarData() {
+
+        if (rutaSelected== null) {
+            Clients.showNotification("Seleccione una ruta para procesar el archivo", Clients.NOTIFICATION_TYPE_INFO, null, "end_before", 2000, true);
+            return;
+        }
+//    procesarData
+        servicioGeneral.procesarDatos(fecha, credential.getUsuarioSistema().getIdUsuario(), rutaSelected.getIdRuta());
+        consultarRutaProcesada();
+        AMedia reporte = Reportes.reportePuntoControl(rutaSelected.getIdRuta(), credential.getUsuarioSistema().getIdUsuario(), fecha);
+        if (reporte != null) {
+            fileContent = new AMedia("report", "pdf", "application/pdf", reporte.getByteData());
+        } else {
+            Clients.showNotification("No existe informacion para presentar", Clients.NOTIFICATION_TYPE_INFO, null, "end_before", 2000, true);
+        }
+
     }
 
     private void consultarRutasUsuario() {
@@ -77,6 +114,22 @@ public class Procesar {
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
+    }
+
+    public UserCredential getCredential() {
+        return credential;
+    }
+
+    public void setCredential(UserCredential credential) {
+        this.credential = credential;
+    }
+
+    public List<DetalleRutaProcesada> getListaPuntoControl() {
+        return listaPuntoControl;
+    }
+
+    public void setListaPuntoControl(List<DetalleRutaProcesada> listaPuntoControl) {
+        this.listaPuntoControl = listaPuntoControl;
     }
 
     @Command
@@ -110,14 +163,14 @@ public class Procesar {
                 int speed = (int) Double.parseDouble(row.getCell(3).toString());
                 int direction = (int) Double.parseDouble(row.getCell(4).toString());
                 trackPoints = new TrackPoints(number,
-                        BigDecimal.valueOf(lat),
-                        BigDecimal.valueOf(lng),
-                        BigDecimal.valueOf(speed),
-                        BigDecimal.valueOf(direction),
-                        sdfDate.parse(timestamp[0]),
-                        sdfHour.parse(timestamp[1]),
-                        sdfTimeStamp.parse(timestamp[0] + " " + timestamp[1]),
-                        header, device[1]);
+                            BigDecimal.valueOf(lat),
+                            BigDecimal.valueOf(lng),
+                            BigDecimal.valueOf(speed),
+                            BigDecimal.valueOf(direction),
+                            sdfDate.parse(timestamp[0]),
+                            sdfHour.parse(timestamp[1]),
+                            sdfTimeStamp.parse(timestamp[0] + " " + timestamp[1]),
+                            header, device[1]);
                 trackPoints.setIdUsuario(credential.getUsuarioSistema());
                 servicioTrackPoint.crear(trackPoints);
             }
@@ -127,4 +180,13 @@ public class Procesar {
             System.out.println("ERROR al subir la imagen IOException " + e.getMessage());
         }
     }
+
+    public AMedia getFileContent() {
+        return fileContent;
+    }
+
+    public void setFileContent(AMedia fileContent) {
+        this.fileContent = fileContent;
+    }
+
 }

@@ -6,7 +6,7 @@
 <?link rel="icon" type="image/x-icon" href="/iconos/deckxel.ico"?>
 <zk  contentStyle="overflow:auto" with="100%" >
     <hbox self="@define(content)" apply="org.zkoss.bind.BindComposer" 
-          viewModel="@id('vm') @init('com.ec.controlador.Procesar')" width="100%">
+          viewModel="@id('vm') @init('com.ec.controlador.Historial')" width="100%">
 <!--        <tabbox  width="100%"  tabscroll="true" >
             <tabs >
                 <tab label="SISTEMA DE FACTURACION" sclass="menutabs"/>
@@ -18,62 +18,48 @@
         <div class="container" >
                         
             <div class="row" style="margin-top:5px">
-                <div class="  col-12 col-sm-12 col-md-8 col-lg-8">
+                <div class="  col-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                        
-                        <button  
-                            src="/iconos/excel1.png"
-                            label="Subir Archivo"
-                            onClick="@command('subirArchivo')"  
-                            class="btn  btn-sm grow btn-primary btn-sm"
-                            tooltiptext="Subir Archivo 'FORMARTO'"/>
-                    <!--</div>-->
-                    <!--<div class="col-12 col-sm-12 col-md-12 col-lg-12">-->
-                        <image  src="/iconos/date-time.png"/>
+                        Inicio:
                         <datebox      value="@bind(vm.fecha)" 
                                       width="150px"
                                       style="font-weight:bold"                                               
                                       buttonVisible="true" 
-                                      format="yyyy/MM/dd HH:mm:ss" 
+                                      format="yyyy/MM/dd hh:mm:ss" 
+                                      constraint="no empty: Ingrese la fecha "/>
+                        
+                        Fin:
+                        <datebox      value="@bind(vm.fechaFin)" 
+                                      width="150px"
+                                      style="font-weight:bold"                                               
+                                      buttonVisible="true" 
+                                      format="yyyy/MM/dd hh:mm:ss" 
                                       constraint="no empty: Ingrese la fecha "/>
                         
                        
-                        <label  style="color:red;font-weight:bold" value=""  ></label>Ruta
-                                        
-                        <combobox  model="@load(vm.listaRutas)"  
-                                   selectedItem="@bind(vm.rutaSelected)" 
-                                   style="width:150px"  
-                                   readonly="true" >
-                            <template name="model">
-                                <comboitem  label="@bind(each.rutNombre)"/>
-                            </template>                                      
-                        </combobox>
-<!--                               
-                        <button   image="/imagenes/buscar1.png"
-                                  onClick="@command('buscarRutasFecha')"  
-                                  class="btn btn-primary btn-sm  "
-                                  tooltiptext="Buscar solicitudes por fecha"/> -->
+                      
                                     
                         <button  
-                            label="Procesar Datos"
-                            
+                            label="Buscar historial"                            
                             class="btn  btn-sm grow btn-primary btn-sm "
-                            onClick="@command('procesarData')" 
+                            onClick="@command('buscar')" 
                             tooltiptext="BUSCAR'"/>
                     </div>
                
 
                     <div class="row  col-12 col-sm-12 col-md-11 col-lg-12">
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                            <listbox model="@load(vm.listaPuntoControl)" 
+                            <listbox model="@load(vm.listaRutas)" 
                                      nonselectableTags=""  mold="paging" pageSize="12"  >
                                 <custom-attributes org.zkoss.zul.listbox.rod="true"/>
                     
                                 <listhead> 
-                                    <listheader width="70%"  label="PUNTO DE CONTROL "  /> 
-                                    <listheader width="10%"  label="H PROG"  /> 
-                                    <listheader width="10%"  label="H LLEG"  /> 
-                                    <listheader width="10%"  label="Ad/AT"  /> 
+                                    <listheader width="90%"  label="RUTA"  /> 
+                                    <listheader width="10%"  label="FECHA"  /> 
+                                    <listheader width="10%"  label="INICIO"  /> 
+                                    <listheader width="35px"  label=""  /> 
+                                    
                                 </listhead>  
                                 <template name="model">   
                                                                                        
@@ -81,25 +67,26 @@
                                         <listcell zclass = "mycss-listcell">
                                             <textbox readonly="true" style="font-size:12px;background:#EBF5FB"  
                                                      class="form-control form-control-sm"                            
-                                                     value="@bind(each.puntoControl)" width="100%" />
+                                                     value="@bind(each.rutpNombre)" width="100%" />
                                         </listcell>
                                         <listcell zclass = "mycss-listcell">
-                                            <datebox compact="true" value="@bind(each.detrpHoraProgramada)" 
+                                            <datebox compact="true" value="@bind(each.rutpFecha)" 
                                                      height=" 30px" 
                                                      buttonVisible="false" lenient="true" readonly="true"
-                                                      format="hh:mm:ss" width="100%"  />
+                                                     format="yyyy/MM/dd" width="100%"  />
                                         </listcell>
                                         <listcell zclass = "mycss-listcell">
-                                            <datebox compact="true" value="@bind(each.detrpHoraLlegada)" 
+                                            <datebox compact="true" value="@bind(each.rutpInicio)" 
                                                      height=" 30px" 
                                                      buttonVisible="false" lenient="true" readonly="true"
                                                      format="hh:mm:ss" width="100%"  />
                                         </listcell>
                                         <listcell zclass = "mycss-listcell">
-                                            <decimalbox format="###.##" readonly="true" 
-                                                        style="font-size:12px;background:#EBF5FB"
-                                                        class="form-control form-control-sm"  
-                                                        value="@bind(each.adelanto)" width="100%"/>
+                                            <image src="/iconos/factelect.jpg"  
+                                                   height=" 30px"   
+                                                   class="btn btn btn-secondary btn-sm grow"                                         
+                                                   onClick="@command('reporte',valor=each)"
+                                                   tooltiptext="Imprimir reporte"/>
                                         </listcell>
                                     </listitem>
                                 </template>
@@ -108,15 +95,7 @@
                     </div>
                             
                 </div>
-                <div class="  col-12 col-sm-12 col-md-4 col-lg-4">
-                       
-        
-                    <iframe height="400px" width="480px"  id="reportframe1"
-               
-                            content="@bind(vm.fileContent)"/>  
-                      
-                       
-                </div>
+                
             </div>
         </div>
     </hbox>

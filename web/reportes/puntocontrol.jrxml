@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="puntocontrol" language="groovy" pageWidth="226" pageHeight="325" columnWidth="186" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.9487171000000014"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idUsuario" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="idRuta" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from ruta_procesada rp, detalle_ruta_procesada dt
+where rp.id_ruta_procesada=dt.id_ruta_procesada
+and rp.id_usuario=$P{idUsuario}
+and rp.rutp_fecha=$P{fecha}
+and dt.id_ruta=$P{idRuta};]]>
+	</queryString>
+	<field name="id_ruta_procesada" class="java.lang.Integer"/>
+	<field name="id_usuario" class="java.lang.Integer"/>
+	<field name="rutp_nombre" class="java.lang.String"/>
+	<field name="rutp_fecha" class="java.sql.Date"/>
+	<field name="rutp_inicio" class="java.sql.Time"/>
+	<field name="rutp_respnasable" class="java.lang.String"/>
+	<field name="id_ruta" class="java.lang.Integer"/>
+	<field name="rutp_unidad" class="java.lang.String"/>
+	<field name="id_det_rut_procesada" class="java.lang.Integer"/>
+	<field name="detrp_longitud" class="java.math.BigDecimal"/>
+	<field name="detrp_lalitud" class="java.math.BigDecimal"/>
+	<field name="detrp_orden" class="java.lang.Integer"/>
+	<field name="detrp_hora" class="java.sql.Time"/>
+	<field name="detrp_hora_programada" class="java.sql.Time"/>
+	<field name="detrp_hora_llegada" class="java.sql.Time"/>
+	<field name="punto_control" class="java.lang.String"/>
+	<field name="adelanto" class="java.math.BigDecimal"/>
+	<variable name="adelanto_1" class="java.math.BigDecimal" resetType="Page" calculation="Sum">
+		<variableExpression><![CDATA[$F{adelanto}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="69" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="186" height="30"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[COOPERATIVA PETROLERA SHUSHUFINDI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="30" width="85" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Unidad]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="85" y="30" width="101" height="19"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{rutp_unidad}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="91" y="49" width="95" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{rutp_fecha}]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH.mm">
+				<reportElement x="0" y="49" width="91" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{rutp_inicio}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="85" height="20"/>
+				<box leftPadding="2" rightPadding="2">
+					<topPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[RELOJ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="85" y="0" width="34" height="20"/>
+				<box leftPadding="2" rightPadding="2">
+					<topPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[PROG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="119" y="0" width="33" height="20"/>
+				<box leftPadding="2" rightPadding="2">
+					<topPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[MARC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="152" y="0" width="34" height="20"/>
+				<box leftPadding="2" rightPadding="2">
+					<topPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[FALT]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="85" height="20"/>
+				<box leftPadding="2" rightPadding="2"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{punto_control}]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm">
+				<reportElement x="85" y="0" width="34" height="20"/>
+				<box leftPadding="2" rightPadding="2"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.sql.Time"><![CDATA[$F{detrp_hora_programada}]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm">
+				<reportElement x="119" y="0" width="33" height="20"/>
+				<box leftPadding="2" rightPadding="2"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.sql.Time"><![CDATA[$F{detrp_hora_llegada}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="152" y="0" width="34" height="20"/>
+				<box leftPadding="2" rightPadding="2"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{adelanto}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="20">
+			<textField>
+				<reportElement x="152" y="0" width="34" height="20"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$V{adelanto_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="152" height="20"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[.]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+</jasperReport>
